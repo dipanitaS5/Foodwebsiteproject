@@ -116,15 +116,18 @@ mysqli_close($conn);
 </head>
 <body>
     <div class="container">
-        <h1 style="color: green; margin-top: 30px;">Register Now</h1>
-        <form class="form" action="register.php" method="POST">
-            <input type="text" name="s_id" id="s_id" placeholder="Enter your student Id" required>
-            <input type="text" name="s_name" id="s_name" placeholder="Enter your name" required>
-            <input type="email" name="s_email" id="s_email" placeholder="Enter your email" required>
-            <input type="password" name="s_password" id="s_password" placeholder="Enter your password" required>
-            <button class="btn">Register</button>
+        <h1 style="color: green; margin-top: 30px;">Sign-up Now</h1>
+        <form class="form" action="register.php" method="post">
+            <input type="text" name="id" id="id" placeholder="Enter your student Id">
+            <input type="text" name="name" id="name" placeholder="Enter your name">
+            <!-- <input type="text" name="age" id="age" placeholder="Enter your age">
+            <input type="text" name="gender" id="gender" placeholder="Enter your gender"> -->
+            <input type="text" name="email" id="email" placeholder="Enter your email">
+            <input type="password" name="password" id="password" placeholder="Enter your password">
+            <!-- <textarea name="desc" id="desc" cols="30" rows="10" placeholder="Enter other informations here"></textarea> -->
+            <button class="btn">Sign-up</button>
         </form> 
-        <p class="register-para">already have an account? <a href="http://localhost/Food-Ordering/food-order/student-login/login.html" target = "-blank">Login now</a></p>
+        <p class="register-para">already have an account? <a href="http://localhost/Food-Ordering/food-order/student-login/login.php" target = "-blank">Login now</a></p>
         <script src="register.js"></script>
     </div>
     
