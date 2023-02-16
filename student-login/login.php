@@ -9,17 +9,22 @@ if(isset($_SESSION['s_email']))
 
 require_once "config.php";
 
-$s_email = $s_password = "";
+$s_email = $s_password = $hashed_password = "";
 $err = "";
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
      if(empty(trim($_POST['s_email'])) || empty(trim($_POST['s_password'])))
      {
-        $s_email_err = "please enter user email and password";
+        $err = "please enter user email and password";
+     }
+
+     else{
+        $s_email = trim($_POST['s_email']);
+        $s_password = trim($_POST['s_password']);
      }
 
      if(empty($err)){
-        $sql = "SELECT  s_email,s_password FROM student WHERE s_email = ?";
+        $sql = "SELECT  s_id,s_email,s_password FROM student WHERE s_email = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt,"s",$param_s_email);
         $param_s_email = $s_email;
@@ -28,11 +33,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(mysqli_stmt_execute($stmt)){
             mysqli_stmt_store_result($stmt);
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    mysqli_stmt_bind_result($stmt,$s_email,$s_password);
+                    mysqli_stmt_bind_result($stmt,$s_id,$s_email,$hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($s_password,$hashed_password)){
                             //this means user is allowed to login
                             session_start();
+                            $_SESSION["s_id"] = $s_id;
                             $_SESSION["s_email"] = $s_email;
                             $_SESSION["loggedin"] = true;
 
