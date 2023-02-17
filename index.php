@@ -1,3 +1,12 @@
+<?php
+// require_once "config.php";
+
+// if(!isset($_SESSION['loggedin'])){
+//     header('Location : student-login/login.html');
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +25,9 @@
         <div class="front">
             
             <ul>    
-                 <li><a href="#">Home</a></li>
+                 <li><a href="http://localhost/Food-Ordering/food-order/foodCategory.php" target = "_blank">Dashboard</a></li>
                  <li><a href="#">About</a></li> 
+                 <li><a href="#">Logout</a></li> 
             </ul>
 
             <div class="menu-icon">
@@ -27,7 +37,7 @@
                 <span class="menu-icon-line"></span>
             </div>
            
-            <a href="http://localhost/Food-Ordering/food-order/student-login/login.html">
+            <a href="">
 
                 <button style="margin-top: 30px;" class="ms-5 btn btn-outline-success" type="consultation">Log In</button>
                 </a> 
@@ -42,16 +52,14 @@
             <h1>CU FOOD ZONE</h1>
         </div>
         <div class="button">
-            <a href="file:///C:\Projects\Website\payment.html">
+            <a href="http://localhost/Food-Ordering/food-order/payment/payment.php" target = "_blank">
 
                 <button style="margin-top: 30px;" class="ms-5 btn btn-outline-success" type="consultation">Payment</button>
                 </a> 
-                <a href="file:///C:\Projects\Website\delivery.html">
+                <a href="delivery.html">
 
                     <button style="margin-top: 30px;" class="ms-5 btn btn-outline-success" type="consultation">Delivery</button>
                     </a> 
-            <!-- <a href="#" class="btn">Payment</a> -->
-            <!-- <a href="#" class="btn">Delivery</a> -->
 
         </div>
     </header>

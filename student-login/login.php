@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_SESSION['s_email']))
 {
-    header("location: http://localhost/Food-Ordering/food-order/home-page/index.php");
+    header("location: http://localhost/Food-Ordering/food-order/index.php");
     exit;
 }
 
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             $_SESSION["loggedin"] = true;
 
                             //redirect user to homepage
-                            header("location: http://localhost/Food-Ordering/food-order/home-page/index.php");
+                            header("location: http://localhost/Food-Ordering/food-order/3.php");
                             
 
                         }
