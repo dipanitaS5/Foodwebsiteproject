@@ -7,13 +7,14 @@ session_start();
     }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meals Page</title>
+    <title>Snack Page</title>
     <style>
         *{
             box-sizing: border-box;
@@ -22,7 +23,7 @@ session_start();
         }
         body{
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 16px;
+            font-size: 16px;       
         }
         .container{
             max-width: 1200px;
@@ -30,51 +31,49 @@ session_start();
             padding: 0 20px;
         }
         header{
-            background-color: rgb(165, 141, 136);
-            color: #ffcfa4;
+            background-color: rgb(246, 252, 142);
+            color: #da985e;
             padding: 20px;
             text-align: center;
-            
         }
-   
-        #meals{
+        #snack{
             padding: 40px 0;
-            background-color: rgb(184, 162, 156);
-            /* background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../Website/images/steak.jpg); */
-            background-image: url("images/steakonfire.jpg");
+            background-color: rgb(246, 252, 142);
+            background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../Website/images/pizza.jpg);
             background-repeat: no-repeat;
             background-size: cover; 
         }
-        .meals-item{
-            background-color: #f9cbae;
+        .snack-item{
+            background-color: #f7f7a3;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
             margin-bottom: 30px;
         }
-        .meals-item:hover{
+        .snack-item:hover{
          box-shadow: 0 0 20px #333;
          transform: translateY(-5px);
+         
        }
-        .meals-item img{
+        .snack-item img{
             width: 150px;
             height: 150px;
             margin-bottom: 20px;
         }
-        .meals-item h2{
+        .snack-item h2{
             font-size: 24px;
             margin-bottom: 10px;
         }
-        .meals-item p{
+        .snack-item p{
             margin-bottom: 10px;
         }
-        .meals-item .price{
+        .snack-item .price{
             font-weight: bold;
             font-size: 18px;
             margin-bottom: 20px;
         }
-        .meals-item button{
+        .snack-item button{
             background-color: #333;
             color: #fff;
             border: none;
@@ -83,7 +82,7 @@ session_start();
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .meals-item button:hover{
+        .snack-item button:hover{
             background-color: #fff;
             color: #333;
         }
@@ -98,39 +97,47 @@ session_start();
 </head>
 <body>
     <header>
-        <h1>Meals</h1>
+        <h1>Snack</h1>
     </header>
     
-    <section id="meals">
+    <section id="snack">
         <div class="container">
-            <div class="meals-item">
-                <img src="images/cashewnut.jpeg" alt="Meals Item">
-                <h2>Cashew Nut Salad</h2>
-                <p>Description of the meals goes here. From this section you can
-                    add your favorite meals to your cart as many as you like</p>
+            <div class="snack-item">
+                <img src="images/cheeseburger.jpg" alt="Snack Item">
+                <h2>Cheeseburger</h2>
+                <p>Description of the snack goes here. From this section you can
+                    add your favorite snack to your cart as many as you like</p>
                     <p class="price">190 tk</p>
                     <button>Add to cart</button>
             </div>
-            <div class="meals-item">
-                <img src="images/biriyani.jpg" alt="Meals Item">
-                <h2>Biriyani</h2>
-                <p>Description of the meals goes here. From this section you can
-                    add your favorite meals to your cart as many as you like</p>
+            <div class="snack-item">
+                <img src="images/pancake.jpg" alt="Snack Item">
+                <h2>Pancakes</h2>
+                <p>Description of the snack goes here. From this section you can
+                    add your favorite snack to your cart as many as you like</p>
                     <p class="price">120 tk</p>
                     <button>Add to cart</button> 
             </div>
-            <div class="meals-item">
-                <img src="images/steakwithfries.jpg" alt="Meals Item">
-                <h2>Steak</h2>
-                <p>Description of the meals goes here. From this section you can
-                    add your favorite meals to your cart as many as you like</p>
-                    <p class="price">120 tk</p>
-                    <button>Add to cart</button> 
+            <div class="snack-item">
+                <img src="images/muffin.jpg" alt="Snack Item">
+                <h2>Muffin</h2>
+                <p>Description of the snack goes here. From this section you can
+                    add your favorite snack to your cart as many as you like</p>
+                    <p class="price">190 tk</p>
+                    <button>Add to cart</button>
+            </div>
+            <div class="snack-item">
+                <img src="images/anotherpizza.jpg" alt="Snack Item">
+                <h2>Pizza</h2>
+                <p>Description of the snack goes here. From this section you can
+                    add your favorite snack to your cart as many as you like</p>
+                    <p class="price">190 tk</p>
+                    <button>Add to cart</button>
             </div>
         </div>
     </section>
     <footer>
-        <p>&copy; 2023 meals Company</p>
+        <p>&copy; 2023 Snack Company</p>
     </footer>
 </body>
 </html>

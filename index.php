@@ -1,9 +1,4 @@
 <?php
-// require_once "config.php";
-
-// if(!isset($_SESSION['loggedin'])){
-//     header('Location : student-login/login.html');
-// }
 
 ?>
 
@@ -25,19 +20,12 @@
         <div class="front">
             
             <ul>    
-                 <li><a href="http://localhost/Food-Ordering/food-order/foodCategory.php" target = "_blank">Dashboard</a></li>
-                 <li><a href="#">About</a></li> 
-                 <li><a href="#">Logout</a></li> 
+                 <li><a href="http://localhost/Food-Ordering/food-order/home.php" target = "_blank">Home</a></li>
+                 <li><a href="http://localhost/Food-Ordering/food-order/student-login/adminlogin.php">Admin</a></li>  
             </ul>
-
-            <div class="menu-icon">
-
-                <span class="menu-icon-line"></span>
-                <span class="menu-icon-line"></span>
-                <span class="menu-icon-line"></span>
-            </div>
            
-            <a href="">
+
+            <a href="http://localhost/Food-Ordering/food-order/student-login/login.php">
 
                 <button style="margin-top: 30px;" class="ms-5 btn btn-outline-success" type="consultation">Log In</button>
                 </a> 
@@ -45,6 +33,10 @@
             <a href="http://localhost/Food-Ordering/food-order/student-register/register.php">
 
                 <button style="margin-top: 25px;" class="ms-5 btn btn-outline-success" type="consultation">Sign Up</button>
+            </a> 
+            <a href="http://localhost/Food-Ordering/food-order/student-login/logout.php">
+
+                <button style="margin-top: 25px;" class="ms-5 btn btn-outline-success" type="consultation">Logout</button>
             </a> 
            
         </div>

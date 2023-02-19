@@ -1,60 +1,3 @@
-<?php
-session_start();
-
-if(isset($_SESSION['s_email']))
-{
-    header("location: http://localhost/Food-Ordering/food-order/index.php");
-    exit;
-}
-
-require_once "config.php";
-
-$s_email = $s_password = $hashed_password = "";
-$err = "";
-
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-     if(empty(trim($_POST['s_email'])) || empty(trim($_POST['s_password'])))
-     {
-        $err = "please enter user email and password";
-     }
-
-     else{
-        $s_email = trim($_POST['s_email']);
-        $s_password = trim($_POST['s_password']);
-     }
-
-     if(empty($err)){
-        $sql = "SELECT  s_id,s_email,s_password FROM student WHERE s_email = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt,"s",$param_s_email);
-        $param_s_email = $s_email;
-       
-//execute the statement
-        if(mysqli_stmt_execute($stmt)){
-            mysqli_stmt_store_result($stmt);
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    mysqli_stmt_bind_result($stmt,$s_id,$s_email,$hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($s_password,$hashed_password)){
-                            //this means user is allowed to login
-                            session_start();
-                            $_SESSION["s_id"] = $s_id;
-                            $_SESSION["s_email"] = $s_email;
-                            $_SESSION["loggedin"] = true;
-
-                            //redirect user to homepage
-                            header("location: http://localhost/Food-Ordering/food-order/3.php");
-                            
-
-                        }
-                    }
-                }
-     }
-    }
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,31 +51,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <span style="margin-top: 35px;">
-                
-                <!-- <a href="">Dashboard</a> -->
-                <!-- <a href="">Category</a> -->
-                <a href="file:///C:\Projects\Website\category.html">
-
-                    <button style="margin-top: 25px;" class="ms-5 btn btn-outline-success" type="consultation">Category</button>
-                    <button style="margin-top: 25px;" class="ms-5 btn btn-outline-success" type="consultation">Dashboard</button>
-                    </a> 
-            </span>
-            <span style="margin-top: 35px;">
-                <a href=""><i class="fa-solid fa-right-from-bracket"></i></a>
-                <a href=""><i class="fa-solid fa-user"></i></a>
-            </span>
-            
-        </nav>
-    </header>
     <section class="login-container">
         <form style="margin-top: 25px;" class="login-form" action="" method="POST">
             <h3 class="text-center text-success">Please Log In</h3> <!-- as h3 is a block , it will show in different block or line -->
-            <input type="email" name="s_email" id="" placeholder="Your Email" required> 
-            <input type="password" name="s_password" id=""placeholder="Password" required> 
-            <button class="btn btn-success mx-auto" style="margin-top: 25px; height: 60px; width: 100px;">Log in</button>
+            <input type="email" name="s_email" id="" placeholder="Enter email" required> 
+            <input type="password" name="s_password" id=""placeholder="Enter Password" required> 
+             <button type="submit" class="btn btn-success mx-auto" style="margin-top: 25px; height: 60px; width: 100px;">Login</button>
+            
         </form>
         </section>
         <section>
@@ -149,3 +74,58 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
           integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php
+session_start();
+
+if(isset($_SESSION['s_email']))
+{
+    header("location: http://localhost/Food-Ordering/food-order/index.php");
+    exit;
+}
+
+require_once "config.php";
+
+$s_email = $s_password = $hashed_password = "";
+$err = "";
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+     if(empty(trim($_POST['s_email'])) || empty(trim($_POST['s_password'])))
+     {
+        $err = "please enter user email and password";
+     }
+
+     else{
+        $s_email = trim($_POST['s_email']);
+        $s_password = trim($_POST['s_password']);
+     }
+
+     if(empty($err)){
+        $sql = "SELECT  s_id,s_email,s_password FROM student WHERE s_email = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt,"s",$param_s_email);
+        $param_s_email = $s_email;
+       
+//execute the statement
+        if(mysqli_stmt_execute($stmt)){
+            mysqli_stmt_store_result($stmt);
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    mysqli_stmt_bind_result($stmt,$s_id,$s_email,$hashed_password);
+                    if(mysqli_stmt_fetch($stmt)){
+                        if(password_verify($s_password,$hashed_password)){
+                            //this means user is allowed to login
+                            session_start();
+                            // $_SESSION["s_id"] = $s_id;
+                            $_SESSION["s_email"] = $s_email;
+                            $_SESSION["loggedin"] = true;
+                            header("location: http://localhost/Food-Ordering/food-order/index.php");
+                            
+
+                        }
+                    }
+                }
+     }
+    }
+}
+
+?> 

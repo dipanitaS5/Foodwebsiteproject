@@ -1,11 +1,10 @@
 <?php
 
-// include('config.php');
-// if(isset($_REQUEST['login']))
-// {
-//     $s_email = $_REQUEST['s_email'];
-//     $
-// }
+session_start();
+ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
+    header("location: http://localhost/Food-Ordering/FOOD-ORDER/index.php");
+    exit;
+    }
 
 ?>
 
@@ -30,19 +29,19 @@
         <ul>
             <li>
                 <!-- <a href="#meals">Meals</a> -->
-                <a href="http://localhost/Food-Ordering/food-order/meals.php" target = "_blank">
+                <a href="http://localhost/Food-Ordering/food-order/meals.php">
 
                     <button style="color: antiquewhite;" class="ms-5 btn btn-outline-success" type="consultation">Meals</button>
                     </a> 
             </li>
             <li>
-                <a href="file:///C:\Projects\Website\meals.html">
+                <a href="http://localhost/Food-Ordering/food-order/snack.php">
 
                     <button style="color: antiquewhite;" class="ms-5 btn btn-outline-success" type="consultation">Snack</button>
                     </a> 
             </li>
             <li>
-                <a href="file:///C:\Projects\Website\meals.html">
+                <a href="http://localhost/Food-Ordering/food-order/beverage.php">
 
                     <button style="color: antiquewhite;" class="ms-5 btn btn-outline-success" type="consultation">Beverage</button>
                     </a> 

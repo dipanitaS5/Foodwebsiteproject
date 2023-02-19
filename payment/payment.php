@@ -1,59 +1,10 @@
 <?php
+
 session_start();
-
-// if(isset($_SESSION['s_email']))
-// {
-//     header("location: http://localhost/Food-Ordering/food-order/index.php");
-//     exit;
-// }
-
-require_once "config.php";
-
-$s_email = $s_name = "";
-$err = "";
-
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-     if(empty(trim($_POST['p_email'])) || empty(trim($_POST['p_name'])))
-     {
-        $err = "please enter user email and name";
-        echo $err;
-     }
-
-     else{
-        $s_email = trim($_POST['p_email']);
-        $s_name = trim($_POST['p_name']);
-     }
-
-     if(empty($err)){
-        $sql = "SELECT  s_id,s_email,s_name FROM student WHERE s_email = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt,"s",$param_s_email);
-        $param_s_email = $s_email;
-       
-//execute the statement
-        if(mysqli_stmt_execute($stmt)){
-            mysqli_stmt_store_result($stmt);
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    mysqli_stmt_bind_result($stmt,$s_id,$s_email,$s_name);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($s_email,$s_email)){
-                            //this means user is allowed to login
-                            session_start();
-                            $_SESSION["s_id"] = $s_id;
-                            $_SESSION["s_email"] = $s_email;
-                            $_SESSION["s_name"] = $s_name;
-                            $_SESSION["loggedin"] = true;
-                            echo('Payment is successful');
-                            //redirect user to homepage
-                            // header("location: http://localhost/Food-Ordering/food-order/index.php");
-                            
-
-                        }
-                    }
-                }
-     }
+ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
+    header("location: http://localhost/Food-Ordering/FOOD-ORDER/student-login/login.php");
+    exit;
     }
-}
 
 ?>
 
