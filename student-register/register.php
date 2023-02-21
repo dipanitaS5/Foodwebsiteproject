@@ -89,6 +89,8 @@ if(empty(trim($_POST['s_password']))){
 
             if(mysqli_stmt_execute($stmt))
             {
+                session_start();
+                $_SESSION["loggedin"] = true;
                 header("location: http://localhost/Food-Ordering/food-order/home.php");
             }
 
