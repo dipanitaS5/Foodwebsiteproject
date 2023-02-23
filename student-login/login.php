@@ -50,6 +50,31 @@
         }
     </style>
 </head>
+<header>
+        <div class="front">
+            
+            <ul>    
+                 <li><a href="http://localhost/Food-Ordering/food-order/home.php">Home</a></li>
+                 <li><a href="http://localhost/Food-Ordering/food-order/student-login/adminlogin.php">Admin</a></li>  
+            </ul>
+           
+
+            <a href="http://localhost/Food-Ordering/food-order/student-login/login.php">
+
+                <button style="margin-top: 30px;" class="ms-5 btn btn-outline-success" type="consultation">Log In</button>
+                </a> 
+
+            <a href="http://localhost/Food-Ordering/food-order/student-register/register.php">
+
+                <button style="margin-top: 25px;" class="ms-5 btn btn-outline-success" type="consultation">Sign Up</button>
+            </a> 
+            <a href="http://localhost/Food-Ordering/food-order/student-login/logout.php">
+
+                <button style="margin-top: 25px;" class="ms-5 btn btn-outline-success" type="consultation">Logout</button>
+            </a> 
+           
+        </div>
+    </header>
 <body>
     <section class="login-container">
         <form style="margin-top: 25px;" class="login-form" action="" method="POST">

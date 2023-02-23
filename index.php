@@ -20,7 +20,7 @@
         <div class="front">
             
             <ul>    
-                 <li><a href="http://localhost/Food-Ordering/food-order/home.php" target = "_blank">Home</a></li>
+                 <li><a href="http://localhost/Food-Ordering/food-order/home.php">Home</a></li>
                  <li><a href="http://localhost/Food-Ordering/food-order/student-login/adminlogin.php">Admin</a></li>  
             </ul>
            
@@ -44,7 +44,7 @@
             <h1>CU FOOD ZONE</h1>
         </div>
         <div class="button">
-            <a href="http://localhost/Food-Ordering/food-order/payment/payment.php" target = "_blank">
+            <a href="http://localhost/Food-Ordering/food-order/payment/payment.php">
 
                 <button style="margin-top: 30px;" class="ms-5 btn btn-outline-success" type="consultation">Payment</button>
                 </a> 

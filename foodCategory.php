@@ -7,6 +7,10 @@ session_start();
     }
 
 ?>
+<?php
+
+require_once "config.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +29,7 @@ session_start();
     <header>
         <h1> Food Categories </h1>
     </header>
-    <nav>
+     <nav>
         <ul>
             <li>
                 <!-- <a href="#meals">Meals</a> -->

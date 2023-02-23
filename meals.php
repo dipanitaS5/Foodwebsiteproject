@@ -7,6 +7,59 @@ session_start();
     }
 
 ?>
+<?php
+
+include('./config.php');
+
+if(isset($_POST['submit'])){
+    $food_name = $_POST['food_name'];
+    $food_price = $_POST['food_price'];
+    $image = $_FILES['file'];
+
+    // echo $food_name;
+    // echo "<br>";
+    // echo $food_price;
+    // echo "<br>";
+    // print_r($image);
+    // echo "<br>";
+
+    $imagefilename = $image['name'];
+    // print_r($imagefilename);
+    // echo "<br>";
+    $imagefileerror = $image['error'];
+    // print_r($imagefileerror);
+    // echo "<br>";
+    $imagefiletemp = $image['tmp_name'];
+    // print_r($imagefiletemp);
+    // echo "<br>";
+
+    $filename_separate =explode('.',$imagefilename);
+    // print_r($filename_separate);
+    // echo "<br>";
+    
+    $file_extension = strtolower(end($filename_separate));
+    // print_r($file_extension);
+
+    $extension = array('jpeg','jpg','png');
+    if(in_array($file_extension,$extension)){
+        $upload_image = 'foodimage/'.$imagefilename;
+        move_uploaded_file($imagefiletemp,$upload_image);
+        $sql = "insert into `food`(food_name,food_price,food_image) values ('$food_name','$food_price','$upload_image')";
+        $result = mysqli_query($conn,$sql);
+
+        if($result){
+            echo '<div class="alert alert-success" role="alert">
+            Data inserted Successfully;
+          </div>';
+        }
+        else{
+            die(mysqli_error($conn));
+        }
+    }
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +67,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meals Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
         *{
             box-sizing: border-box;
@@ -97,11 +151,33 @@ session_start();
     </style>
 </head>
 <body>
-    <header>
+<header>
         <h1>Meals</h1>
     </header>
+    <?php
+
+        $sql = "select * from `food`";
+        $result = mysqli_query($conn,$sql);
+        while($row = mysqli_fetch_assoc($result)){
+            $id = $row['food_id'];
+            $name = $row['food_name'];
+            $image = $row['food_image'];
+            $price = $row['food_price'];
+            echo '<div class="container">
+            <div class="meals-item">
+                <img src='.$image.'/>
+                <h2>'.$name.'</h2>
+                <p>Description of the meals goes here. From this section you can
+                    add your favorite meals to your cart as many as you like</p>
+                    <p class="price">'.$price.'</p>
+                    <button>Add to cart</button>
+            </div>';
+        }
+        
+
+    ?>
     
-    <section id="meals">
+    <!-- <section id="meals">
         <div class="container">
             <div class="meals-item">
                 <img src="images/cashewnut.jpeg" alt="Meals Item">
@@ -128,9 +204,10 @@ session_start();
                     <button>Add to cart</button> 
             </div>
         </div>
-    </section>
+    </section> -->
     <footer>
         <p>&copy; 2023 meals Company</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>

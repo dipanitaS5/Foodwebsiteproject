@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -7,23 +8,22 @@ session_start();
     }
 ?>
 <?php
-
 require_once "config.php";
-?>
+    $search = $_POST['search'];
 
+    $sql = "SELECT *"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Search Page</title>
     <style>
         body{
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-image: url("images/foody.jpg");
-            background-repeat: no-repeat;
             background-size: cover; 
             opacity: 0.9;
             background-position: center;
@@ -107,45 +107,8 @@ require_once "config.php";
 </head>
 <body>
     <header>
-        <h1>CU Food Zone</h1>
-        <section class="food-search text-center">
-            <div class="container">
-                <form action="food-search.php" method="POST">
-                    <input class="search-input" type="search" name="search" required>
-                    <input class="btn" type="submit" name="submit" value="search">
-                </form>
-
-            </div>
-
-        </section>
+        <h1 style = "font-weight:bolder;color:gray">Search Result</h1>
     </header>
-    <div class="container">
-        <h2>Featured Items</h2>
-        <div class="menu">
-            <div class="menu-item">
-                <img src="images/steakonfire.jpg" alt="Item 1">
-                <h2>Meals</h2>
-                <p>this is meals </p>
-            </div>
-            <div class="menu-item">
-                <img src="images/cashewnut.jpeg" alt="Item 1">
-                <h2>Snack</h2>
-                <p>this is meals </p>
-            </div>
-            <div class="menu-item">
-                <img src="images/americano.jpg" alt="Item 1">
-                <h2>Beverage</h2>
-                <p>this is meals </p>
-            </div>
-            <div class="menu-item">
-                <img src="images/pancake.jpg" alt="Item 1">
-                <h2>Dessert</h2>
-                <p>this is meals </p>
-            </div>
-        </div>
-        <div class="cta">
-            <a href="http://localhost/Food-Ordering/food-order/foodCategory.php">Order Now</a>
-        </div>
-    </div>
+    
 </body>
 </html>

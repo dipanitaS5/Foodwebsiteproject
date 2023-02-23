@@ -47,27 +47,27 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 </tr>
             <?php
 
-            echo '<script>alert("Thank you for your information. Payment will be received by the delivery boy")</script>';
 
+            }
+        $squery = "INSERT INTO  payment(p_amount) VALUES (?)";
+        $st = mysqli_prepare($connect, $squery);
+        if($st)
+        {
+            mysqli_stmt_bind_param($st,"s",$param_p_amount);
+
+            //set these parameters
+
+            $param_p_amount = $p_amount;
+            if(mysqli_stmt_execute($st)){
+                echo '<script>alert("Thank you for your information. Payment will be received by the delivery boy")</script>';
+            }
         }
-       
-// //execute the statement
-//         if(mysqli_stmt_execute($stmt)){
-//             mysqli_stmt_store_result($stmt);
-//                 if(mysqli_stmt_num_rows($stmt) == 1){
-//                     mysqli_stmt_bind_result($stmt,$s_id,$s_name,$s_email,$p_amount);
-//                     if(mysqli_stmt_fetch($stmt)){
-//                             //this means user is allowed to login
-//                             session_start();
-//                             $_SESSION["s_name"] = $s_name;
-//                             $_SESSION["s_email"] = $s_email;
-//                             $_SESSION["loggedin"] = true;
-//                             echo "payment is successful";
-//                     }
-//                 }
-//      }
+        mysqli_stmt_close($st);
+            
+
     }
 }
+mysqli_close($connect);
 
 ?> 
 
@@ -135,8 +135,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <label for="payment_method">Payment Method:</label>
                 <select name="payment_method" id="payment_method">
                     <option value="Cash On Delivery">Cash On Delivery</option>
-                    <!-- <option value="Credit Card">Credit Card</option>
-                    <option value="Debit Card">Debit Card</option> -->
                 </select>
                 <input type="submit" value="SubmitPayment">
             </form>
