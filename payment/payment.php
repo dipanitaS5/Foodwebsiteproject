@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <?php
 
 
-            }
+            
         $squery = "INSERT INTO  payment(p_amount) VALUES (?)";
         $st = mysqli_prepare($connect, $squery);
         if($st)
@@ -66,6 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             
 
     }
+}
 }
 mysqli_close($connect);
 

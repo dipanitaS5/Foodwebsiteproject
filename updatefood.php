@@ -5,7 +5,16 @@ session_start();
     header("location: http://localhost/Food-Ordering/FOOD-ORDER/index.php");
     exit;
     }
+
 ?>
+<?php
+require_once 'auth_check.php';
+?>
+<?php
+
+include('./config.php');
+?>
+
 <?php
 
 
@@ -85,7 +94,7 @@ session_start();
                ?>
 
          
-            <button type="submit" class="btn btn-success mx-auto" name="submit" style="margin-top: 25px; height: 60px; width: 100px;">Add</button>        
+            <button type="submit" class="btn btn-success mx-auto" name="update" style="margin-top: 25px; height: 60px; width: 100px;">Update</button>        
                     
         </form>
     </section>
@@ -94,3 +103,9 @@ session_start();
           integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+
+
