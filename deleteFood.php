@@ -1,15 +1,18 @@
 <?php
+    require_once 'auth_check.php';
+?>
+<?php
 
 session_start();
- if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
-    header("location: http://localhost/Food-Ordering/FOOD-ORDER/index.php");
+ if(!isset($_SESSION['admin_email']) || $_SESSION['loggedin'] != true){
+    header("location: http://localhost/Food-Ordering/FOOD-ORDER/student-login/adminlogin.php");
     exit;
     }
 ?>
 
 <?php
 include('./config.php');
-require_once 'auth_check.php';
+
 
 ?>
 <?php

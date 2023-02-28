@@ -1,26 +1,13 @@
 <?php
 
 session_start();
- if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
-    header("location: http://localhost/Food-Ordering/FOOD-ORDER/index.php");
+ if(!isset($_SESSION['admin_email']) || $_SESSION['loggedin'] != true){
+    header("location: http://localhost/Food-Ordering/FOOD-ORDER/student-login/adminlogin.php");
     exit;
     }
-
 ?>
 <?php
-require_once 'auth_check.php';
-?>
-<?php
-
-include('./config.php');
-?>
-
-<?php
-
-
-?>
-<?php
-  require_once('./operations.php')
+  require_once('./operationsUpdate.php')
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,11 +65,14 @@ include('./config.php');
    <div class="d-flex justify-content-center">
    <a href="http://localhost/Food-Ordering/food-order/home.php"><button type="submit" class="btn btn-outline-success" style="margin-top: 35px; height: 60px; width: 100px;">Home</button></a>
    <a href="http://localhost/Food-Ordering/food-order/index.php"><button type="submit" class="btn btn-outline-success" style="margin-top: 35px; margin-left: 60px; height: 60px; width: 100px;">Index</button></a>
-   <a href="http://localhost/Food-Ordering/food-order/meals.php"><button type="submit" class="btn btn-outline-warning" style="margin-top: 35px; margin-left: 60px; height: 60px; width: 100px;">Update</button></a>
+   <a href="http://localhost/Food-Ordering/food-order/addfood.php"><button type="submit" class="btn btn-outline-warning" style="margin-top: 35px; margin-left: 60px; height: 60px; width: 100px;">Add</button></a>
    <a href="http://localhost/Food-Ordering/food-order/meals.php"><button type="submit" class="btn btn-outline-danger" style="margin-top: 35px; margin-left: 60px; height: 60px; width: 100px;">Delete</button></a>
    </div>
     <section class="manage-container">
         <form style="margin-top: 10px;" class="manage-form" action="meals.php" method="post" enctype="multipart/form-data">
+            <?php  
+               inputFields("foodid","food_id","","number");
+               ?>
             <?php  
                inputFields("foodname","food_name","","text");
                ?>
@@ -98,14 +88,11 @@ include('./config.php');
                     
         </form>
     </section>
-          <!-- bootstrap js -->
+
+
+?>
+         <!-- bootstrap js -->
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
-
-

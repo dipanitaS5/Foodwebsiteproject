@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(isset($_SESSION['admin_email']))
+{
+    header("location: http://localhost/Food-Ordering/food-order/addfood.php");
+    exit;
+}
 
 ?>
 

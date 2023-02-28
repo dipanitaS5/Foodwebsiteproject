@@ -7,71 +7,172 @@ session_start();
     }
 
 ?>
-<!DOCTYPE html>
+<?php
+
+include('./config.php');
+
+
+if(isset($_POST['submit'])){
+    $food_name = $_POST['food_name'];
+    $food_price = $_POST['food_price'];
+    $image = $_FILES['file'];
+
+    $imagefilename = $image['name'];
+    // print_r($imagefilename);
+    // echo "<br>";
+    $imagefileerror = $image['error'];
+  
+    $imagefiletemp = $image['tmp_name'];
+    
+    $filename_separate =explode('.',$imagefilename);
+      
+    $file_extension = strtolower(end($filename_separate));
+
+    $extension = array('jpeg','jpg','png');
+    if(in_array($file_extension,$extension)){
+        $upload_image = 'foodimage/'.$imagefilename;
+        move_uploaded_file($imagefiletemp,$upload_image);
+        $sql = "insert into `food`(food_name,food_price,food_image) values ('$food_name','$food_price','$upload_image')";
+        $result = mysqli_query($conn,$sql);
+
+        if($result){
+            echo '<div class="alert alert-success" role="alert">
+            Data inserted Successfully;
+          </div>';
+        }
+        else{
+            die(mysqli_error($conn));
+        }
+    }
+
+}
+
+?>
+
+
+
+<!-- update food -->
+<?php
+
+if(isset($_POST['update'])){
+    $id = $_POST['food_id'];
+    $food_name = $_POST['food_name'];
+    $food_price = $_POST['food_price'];
+    $image = $_FILES['file'];
+
+    $imagefilename = $image['name'];
+    // print_r($imagefilename);
+    // echo "<br>";
+    $imagefileerror = $image['error'];
+  
+    $imagefiletemp = $image['tmp_name'];
+    
+    $filename_separate =explode('.',$imagefilename);
+      
+    $file_extension = strtolower(end($filename_separate));
+
+    $extension = array('jpeg','jpg','png');
+    if(in_array($file_extension,$extension)){
+        $upload_image = 'foodimage/'.$imagefilename;
+        move_uploaded_file($imagefiletemp,$upload_image);
+        $sql = "update `food`set food_id = $id, food_name = '$food_name', food_price = '$food_price', food_image = '$upload_image' where food_id = $id";
+        $result = mysqli_query($conn,$sql);
+
+        if($result){
+            echo '<div class="alert alert-success" role="alert">
+            Data updated Successfully;
+          </div>';
+        }
+        else{
+            die(mysqli_error($conn));
+        }
+    }
+
+}
+
+?>
+
+
+<!-- finsh update -->
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beverage Page</title>
+    <title>Meals Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
         *{
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        body{
+     body{
             font-family: Arial, Helvetica, sans-serif;
             font-size: 16px;
-        }
+        } 
         .container{
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         header{
-            background-color: rgb(255, 251, 205);
-            color: #ab2b2b;
+            background-color: rgb(165, 141, 136);
+            color: #ffcfa4;
             padding: 20px;
             text-align: center;
+            
         }
-        #beverage{
+.head{
+    background-color: rgb(58, 159, 58);
+    border-radius: 3px;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+   
+        #meals{
             padding: 40px 0;
-            background-color: azure;
-            background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../Website/images/coffelatte.jpg);
+            background-color: rgb(184, 162, 156);
+            /* background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../Website/images/steak.jpg); */
+            background-image: url("images/steakonfire.jpg");
             background-repeat: no-repeat;
             background-size: cover; 
         }
-        .beverage-item{
-            background-color: #fcf9b9;
+        .meals-item{
+            background-color: #f9cbae;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
             margin-bottom: 30px;
         }
-        .beverage-item:hover{
+        .meals-item:hover{
          box-shadow: 0 0 20px #333;
          transform: translateY(-5px);
        }
-        .beverage-item img{
+        .meals-item img{
             width: 150px;
             height: 150px;
             margin-bottom: 20px;
         }
-        .beverage-item h2{
+        .meals-item h2{
             font-size: 24px;
             margin-bottom: 10px;
         }
-        .beverage-item p{
+        .meals-item p{
             margin-bottom: 10px;
         }
-        .beverage-item .price{
+        .meals-item .price{
             font-weight: bold;
             font-size: 18px;
             margin-bottom: 20px;
         }
-        .beverage-item button{
+        .meals-item button{
             background-color: #333;
             color: #fff;
             border: none;
@@ -80,7 +181,7 @@ session_start();
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .beverage-item button:hover{
+        .meals-item button:hover{
             background-color: #fff;
             color: #333;
         }
@@ -94,40 +195,42 @@ session_start();
     </style>
 </head>
 <body>
-    <header>
-        <h1>Beverage</h1>
-    </header>
-    
-    <section id="beverage">
-        <div class="container">
-            <div class="beverage-item">
-                <img src="images/Iatte.jpg" alt="Beverage Item">
-                <h2>Latte</h2>
-                <p>Description of the beverage goes here. From this section you can
-                    add your favorite beverage to your cart as many as you like</p>
-                    <p class="price">190 tk</p>
+<div class="d-flex justify-content-center mb-5">
+   <a href="http://localhost/Food-Ordering/food-order/home.php"><button type="submit" class="btn btn-outline-success" style="margin-top: 35px; height: 60px; width: 100px;">Home</button></a>
+   <a href="http://localhost/Food-Ordering/food-order/index.php"><button type="submit" class="btn btn-outline-success" style="margin-top: 35px; margin-left: 60px; height: 60px; width: 100px;">Index</button></a>
+   </div>
+<header class="mb-5">
+<div class="header">
+        <p class="logo">Menu</p>
+    </div>
+    </header> 
+    <?php
+
+        $sql = "select * from `food`";
+        $result = mysqli_query($conn,$sql);
+        while($row = mysqli_fetch_assoc($result)){
+            $id = $row['food_id'];
+            $name = $row['food_name'];
+            $image = $row['food_image'];
+            $price = $row['food_price'];
+            echo '<div class="container d-flex">
+            <div class="meals-item">
+            <p><img src= "'.$image.'"/></p>
+                <h2>'.$name.'</h2>
+                <p>Description of the meals goes here. From this section you can
+                    add your favorite meals to your cart as many as you like</p>
+                    <p class="price">'.$price.' tk</p>
                     <button>Add to cart</button>
-            </div>
-            <div class="beverage-item">
-                <img src="images/americanocoffe.jpg" alt="Beverage Item">
-                <h2>Americano</h2>
-                <p>Description of the beverage goes here. From this section you can
-                    add your favorite beverage to your cart as many as you like</p>
-                    <p class="price">170 tk</p>
-                    <button>Add to cart</button> 
-            </div>
-            <div class="beverage-item">
-                <img src="images/chocomilkshake.jpg" alt="Beverage Item">
-                <h2>Choco Milk Shake</h2>
-                <p>Description of the beverage goes here. From this section you can
-                    add your favorite beverage to your cart as many as you like</p>
-                    <p class="price">120 tk</p>
-                    <button>Add to cart</button> 
-            </div>
-        </div>
-    </section>
+                    <button><a href="deleteFood.php?deleteid='.$id.'" class="text-white text-decoration-none"> Delete</a></button>
+                    
+            </div>';
+        }
+     
+    ?>
+ 
     <footer>
-        <p>&copy; 2023 Beverage Company</p>
+        <p>&copy; 2023 CU Food-Zone</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
