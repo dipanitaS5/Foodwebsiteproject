@@ -5,7 +5,16 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
     header("location: http://localhost/Food-Ordering/FOOD-ORDER/index.php");
     exit;
     }
+    include('./config.php');
 ?>
+<?php
+    $session_email = $_SESSION['s_email'];
+    $select_customer = "select * from student where s_email = '$session_email'";
+
+    $run_cust = mysqli_query($conn,$select_customer);
+    $row_customer = mysqli_fetch_array($run_cust);
+    $s_id = $row_customer['s_id'];
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,9 +94,18 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
             <h3 class="text-center text-dark p-3"> <span id="gtotal"></span> Tk</h3>
             
         </div>
-        <form action="payment/payment.php" class="mt-5 d-flex justify-content-center">
-        <button class="btn btn-outline-success" style="height: 60px; width: 100px;" name=" ">Make a purchase</button>
+
+        <?php
+            if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0)
+            {
+        ?>
+        <form action="payment/payment.php" method="POST" class="mt-5 d-flex justify-content-center">
+        <button class="btn btn-outline-success" style="height: 60px; width: 100px;" name="purchase">Make a purchase
+            </button>
         </form>
+        <?php
+            }
+            ?>
     </div>
    </div>
 <script>
@@ -107,10 +125,12 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
         gt = gt + (iprice[i].value) * (iquantity[i].value);
     }
     gtotal.innerText = gt;
+    
  }
 
  subTotal();
 
+ 
 
 </script>
     

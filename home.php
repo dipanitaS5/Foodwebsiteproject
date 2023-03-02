@@ -52,7 +52,7 @@ require_once "config.php";
             width: 30%;
             margin: 50px 3.33%;
             padding: 20px;
-            border: 11px solid rgb(139, 139, 139);
+            border: 11px solid rgba(164, 164, 164, 0.906);
             border-radius: 11px;
             text-align: center;
             color: black;
