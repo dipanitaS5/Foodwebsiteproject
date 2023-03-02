@@ -22,14 +22,14 @@ require_once "config.php";
         body{
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-image: url("images/foody.jpg");
+            /* background-image: url("images/foody.jpg"); */
             background-repeat: no-repeat;
             background-size: cover; 
             opacity: 0.9;
             background-position: center;
         }
         header{
-            background-color: antiquewhite;
+            background-color: rgba(193, 245, 195, 0.847);
             padding: 20px;
             text-align: center;
         }
@@ -52,7 +52,7 @@ require_once "config.php";
             width: 30%;
             margin: 50px 3.33%;
             padding: 20px;
-            border: 11px solid #f67d7d;
+            border: 11px solid rgb(139, 139, 139);
             border-radius: 11px;
             text-align: center;
             color: black;
@@ -138,7 +138,7 @@ require_once "config.php";
                 <p>this is meals </p>
             </div>
             <div class="menu-item">
-                <img src="images/pancake.jpg" alt="Item 1">
+                <img src="images/muffin.jpg" alt="Item 1">
                 <h2>Dessert</h2>
                 <p>this is meals </p>
             </div>

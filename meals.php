@@ -175,7 +175,8 @@ if(isset($_POST['update'])){
             background-size: cover; 
         }
         .meals-item{
-            background-color: #f9cbae;
+            /* background-color: #f9cbae; */
+            background-color:rgba(205, 205, 205, 0.847);
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 20px;

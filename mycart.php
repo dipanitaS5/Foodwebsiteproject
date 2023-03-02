@@ -54,7 +54,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
                                 <tr class='mg-5'>
                                     <td>$sr</td>
                                     <td>$value[food_name]</td>
-                                    <td>$value[food_price]<input type='hidden' class='iprice' value='$value[food_price]'</td>
+                                    <td>$value[food_price]<input type='hidden' class='iprice' value='$value[food_price]'></td>
                                     <td>
                                     <form action='manage_cart.php' method='POST'>
                                     <input class='text-center border-0 bg-light rounded-3 text-dark  text-xl iquantity' name='Mod_Quantity' onchange='this.form.submit();' type='number' value='$value[quantity]' min='1' max='60'>
@@ -63,10 +63,13 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
                                     </td>
 
                                     <td class = 'itotal'></td>
-                                   <form action='manage_cart.php' method='POST'>
-                                   <td><button class='border-0' name='remove_item'><i class='fa-solid fa-trash fa-xl text-success'></i></button></td>
+                                   
+                                   <td><form action='manage_cart.php' method='POST'>
+                                   <button class='border-0' name='remove_item'><i class='fa-solid fa-trash fa-xl text-success'></i></button>
                                    <input type='hidden' name='food_name' value='$value[food_name]'>
                                    </form>
+                                   </td>
+                                   
                                 </tr>
 
                                 ";
@@ -83,7 +86,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
             
         </div>
         <form action="payment/payment.php" class="mt-5 d-flex justify-content-center">
-        <button class="btn btn-outline-success" style="height: 60px; width: 100px;" name="purchase">Make a purchase</button>
+        <button class="btn btn-outline-success" style="height: 60px; width: 100px;" name=" ">Make a purchase</button>
         </form>
     </div>
    </div>
@@ -101,7 +104,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
     for(i=0;i<iprice.length;i++)
     {
         itotal[i].innerText = (iprice[i].value * iquantity[i].value);
-        gt = gt + (iprice[i].value * iquantity[i].value);
+        gt = gt + (iprice[i].value) * (iquantity[i].value);
     }
     gtotal.innerText = gt;
  }

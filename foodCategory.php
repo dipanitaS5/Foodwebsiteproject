@@ -22,51 +22,52 @@ require_once "config.php";
       <!-- bootstrap css -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" 
       rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-      <!-- <script src="https://kit.fontawesome.com/b94379aac3.js" crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="styles/categories.css">
+      <link rel="stylesheet" href="styles/categories.css">
 </head>
 <body>
     <header>
         <h1> Food Categories </h1>
     </header>
-     <nav>
+    <div class="d-flex justify-content-center mb-5">
+   <a href="http://localhost/Food-Ordering/food-order/home.php"><button type="submit" class="btn btn-outline-success" style="margin-top: 35px; height: 60px; width: 100px;">Home</button></a>
+   <a href="http://localhost/Food-Ordering/food-order/index.php"><button type="submit" class="btn btn-outline-success" style="margin-top: 35px; margin-left: 60px; height: 60px; width: 100px;">Index</button></a>
+</div>
+    <nav>
         <ul>
-            <li>
-                <!-- <a href="#meals">Meals</a> -->
-                <a href="http://localhost/Food-Ordering/food-order/meals.php">
 
-                    <button style="color: antiquewhite;" class="ms-5 btn btn-outline-success" type="consultation">Meals</button>
+             <li>
+                <a href="meals.php">
+
+                    <button style="color: antiquewhite;" class="ms-5 btn btn-outline-success" type="consultation">The   Food   Menu</button>
                     </a> 
             </li>
-            <li>
-                <a href="http://localhost/Food-Ordering/food-order/snack.php">
-
-                    <button style="color: antiquewhite;" class="ms-5 btn btn-outline-success" type="consultation">Snack</button>
-                    </a> 
-            </li>
-            <li>
-                <a href="http://localhost/Food-Ordering/food-order/beverage.php">
-
-                    <button style="color: antiquewhite;" class="ms-5 btn btn-outline-success" type="consultation">Beverage</button>
-                    </a> 
-            </li>
+        
             
         </ul>
     </nav>
 
     <main>
-        <section id="meals">
+         <section id="meals">
             <h2>Meals</h2>
-            <p>Here is information about various types of meals and you can choose as your liking.</p>
+            <p>In 'The Food Menu' you can find various meals such as Cashew Nut salad, Steak,Kebab etc.
+             A well-cooked meals can enhance the dining experience and satisfy the customer's cravings.</p>
         </section>
         <section id="snack">
             <h2>Snack</h2>
-            <p>Here is information about various types of snacks and their you can choose as your liking.</p>
+            <p>In 'The Food Menu' you can find various snacks such as Tacos, Cheese Burger etc.
+                A well-cooked snack can enhance the dining experience and satisfy the customer's cravings.</p>
         </section>
         <section id="beverage">
-            <h2>Dairy</h2>
-            <p>Here is information about various types of beverages and you can choose as your liking.</p>
-        </section>
+            <h2>Beverage</h2>
+            <p>In 'The Food Menu' you can find various beverages such as Iced Americano, Latte etc.
+                A well-prepared beverage can enhance the dining experience and satisfy the customer's cravings.</p>
+        </section>  
+        <section id="dessert">
+            <h2>Dessert</h2>
+            <p>In 'The Food Menu' you can find various desserts such as Muffin, Pancake etc.
+                A well-prepared dessert can enhance the dining experience and satisfy the customer's cravings.</p>
+        </section> 
+
     </main>
     <footer>
         <p>Copyrights and &copy; 2023 Food Categories</p>
