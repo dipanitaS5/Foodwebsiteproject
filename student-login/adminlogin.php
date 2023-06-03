@@ -107,7 +107,7 @@ if(isset($_POST['login']))
     if($total == 1){
        $_SESSION['admin_email'] = $a_email;
        $_SESSION["loggedin"] = true;
-       header("location: http://localhost/Food-Ordering/FOOD-ORDER/adminhub.php");
+       header("location: http://localhost/Food-Ordering/FOOD-ORDER/addfood.php");
     }
 
     else {
