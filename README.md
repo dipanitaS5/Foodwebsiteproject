@@ -19,7 +19,7 @@ offline food ordering process for Chittagong University students.
 
 * install XAMPP
 * start phpMyAdmin and connect with localhost
-* website will be found at http://localhost
+* website will be found at http://localhost/Food-Ordering/food-order/index.php
 
 
 # contributors
